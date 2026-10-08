@@ -82,11 +82,14 @@ section{padding:78px 0}
 .main-nav>a:hover,.nav-drop-btn:hover{background:var(--ember-soft);color:var(--ember-dark)}
 .nav-item{position:relative}
 .nav-dropdown{
-  position:absolute;top:calc(100% + 8px);left:0;min-width:300px;background:#fff;
+  position:absolute;top:100%;left:0;min-width:300px;background:#fff;
   border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:10px;display:none;z-index:300;
 }
-.nav-item:hover .nav-dropdown,.nav-item:focus-within .nav-dropdown{display:block}
+.nav-item:hover .nav-dropdown:not(.areas-dropdown),.nav-item:focus-within .nav-dropdown:not(.areas-dropdown),.nav-item.dropdown-open .nav-dropdown:not(.areas-dropdown){display:block}
+.areas-dropdown{min-width:480px;grid-template-columns:1fr 1fr;gap:2px 6px}
+.nav-item:hover .areas-dropdown,.nav-item:focus-within .areas-dropdown,.nav-item.dropdown-open .areas-dropdown{display:grid}
+.areas-dropdown .areas-all{grid-column:1/-1;font-weight:700;color:var(--ember-dark);border-top:1px solid var(--line);margin-top:6px;padding-top:12px}
 .nav-dropdown a{display:block;padding:10px 14px;border-radius:8px;font-size:15px;color:var(--slate);font-weight:500}
 .nav-dropdown a:hover{background:var(--ember-soft);color:var(--ember-dark)}
 .header-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ember);color:#fff;
@@ -289,19 +292,26 @@ table.compare td:first-child{font-weight:700;color:var(--charcoal)}
 .post-card .post-date{display:block;font-size:13px;font-weight:600;color:var(--slate-light);margin:0 24px 24px}
 
 /* ---------- Footer ---------- */
-.site-footer{background:#101215;color:#b9b2a6;padding:44px 0 0;font-size:14px}
-.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:36px}
+.site-footer{background:#101215;color:#b9b2a6;padding:28px 0 0;font-size:13px}
+.footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.15fr;gap:24px;margin-bottom:22px}
 .footer-brand .brand-text{color:#fff}
-.footer-brand p{font-size:14px;margin:14px 0 16px;max-width:300px}
-.site-footer h4{color:#fff;font-size:15px;margin-bottom:14px;letter-spacing:.02em}
-.footer-links{list-style:none}
-.footer-links li{margin-bottom:7px}
-.footer-links a{color:#b9b2a6;font-size:14px}
+.footer-brand p{font-size:13px;margin:10px 0;max-width:300px;line-height:1.55}
+.footer-mini{font-size:12.5px}
+.footer-mini a{color:#d9d2c7}
+.site-footer h4{color:#fff;font-size:12.5px;margin:0 0 8px;letter-spacing:.07em;text-transform:uppercase}
+.footer-links{list-style:none;margin:0;padding:0}
+.footer-links li{margin-bottom:4px}
+.footer-links a{color:#b9b2a6;font-size:13px;line-height:1.5}
 .footer-links a:hover{color:var(--ember)}
-.footer-nap{font-size:14px;line-height:1.7}
+.areas-toggle{background:none;border:0;padding:6px 0 0;color:var(--ember);font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font-head)}
+.areas-toggle:hover{color:#fff}
+.areas-toggle .arr{display:inline-block;transition:transform .25s}
+.areas-toggle[aria-expanded="true"] .arr{transform:rotate(180deg)}
+.footer-nap{font-size:13px;line-height:1.65}
 .footer-nap a{color:#fff;font-weight:600}
 .footer-nap a:hover{color:var(--ember)}
-.footer-bottom{border-top:1px solid #26292e;padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px}
+.footer-bottom{border-top:1px solid #26292e;padding:12px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px}
+.footer-bottom a{color:#b9b2a6}
 
 /* ---------- Breadcrumbs ---------- */
 .crumbs{font-size:14px;color:var(--slate-light);margin-bottom:26px}
@@ -359,7 +369,8 @@ table.compare td:first-child{font-weight:700;color:var(--charcoal)}
     border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(23,25,29,.12);
   }
   .main-nav.open .nav-dropdown{position:static;display:none;box-shadow:none;border:0;padding:0 0 0 12px}
-  .main-nav.open .nav-item.expanded .nav-dropdown{display:block}
+  .main-nav.open .nav-item.dropdown-open .nav-dropdown{display:block}
+  .main-nav.open .areas-dropdown{grid-template-columns:1fr;min-width:0}
   .contact-cards{grid-template-columns:1fr}
   .callbar{display:block}
   body{padding-bottom:76px}

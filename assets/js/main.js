@@ -40,17 +40,50 @@
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    // expandable Services submenu on mobile
-    var dropBtn = nav.querySelector(".nav-drop-btn");
-    var dropItem = nav.querySelector(".nav-item");
-    if(dropBtn && dropItem){
-      dropBtn.addEventListener("click", function(e){
-        if(window.innerWidth <= 860){
-          e.preventDefault();
-          dropItem.classList.toggle("expanded");
+    /* Dropdown menus: hover-intent + click toggle (all viewports) + keyboard */
+    var navItems = nav.querySelectorAll(".nav-item");
+    function closeAllDrops(except){
+      navItems.forEach(function(o){
+        if(o !== except){
+          o.classList.remove("dropdown-open");
+          var b = o.querySelector(".nav-drop-btn");
+          if(b) b.setAttribute("aria-expanded", "false");
         }
       });
     }
+    navItems.forEach(function(item){
+      var btn = item.querySelector(".nav-drop-btn");
+      if(!btn) return;
+      var closeTimer = null;
+      function openDrop(){
+        closeAllDrops(item);
+        item.classList.add("dropdown-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+      function closeDrop(){
+        item.classList.remove("dropdown-open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      item.addEventListener("mouseenter", function(){
+        if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; }
+        openDrop();
+      });
+      item.addEventListener("mouseleave", function(){
+        closeTimer = setTimeout(closeDrop, 250);
+      });
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        if(item.classList.contains("dropdown-open")){
+          closeDrop();
+        }else{
+          if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; }
+          openDrop();
+        }
+      });
+    });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){ closeAllDrops(null); }
+    });
     // close nav when a plain link is tapped
     nav.querySelectorAll("a").forEach(function(link){
       link.addEventListener("click", function(){
@@ -59,6 +92,25 @@
       });
     });
   }
+
+  /* Footer: expandable service-areas list */
+  document.querySelectorAll(".areas-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var footer = btn.closest(".site-footer");
+      var extra = footer ? footer.querySelector(".footer-areas-extra") : null;
+      if(!extra) return;
+      var isOpen = btn.getAttribute("aria-expanded") === "true";
+      if(isOpen){
+        extra.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+        btn.innerHTML = 'View all 15 areas <span class="arr" aria-hidden="true">\u25be</span>';
+      }else{
+        extra.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
+        btn.innerHTML = 'Show fewer <span class="arr" aria-hidden="true">\u25be</span>';
+      }
+    });
+  });
 
   /* Footer year */
   document.querySelectorAll(".js-year").forEach(function(el){
