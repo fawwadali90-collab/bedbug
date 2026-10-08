@@ -58,9 +58,10 @@
         <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#17191D"/><path d="M32 10 L48 17 V32 C48 44 40 52 32 55 C24 52 16 44 16 32 V17 Z" fill="#E8552F"/><path d="M25 32 l5.5 5.5 L40 26" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span class="brand-text">Naples Bed Bug Treatment<small>Bed Bug Specialists</small></span>
       </a>
-      <nav class="main-nav" aria-label="Primary">
+            <nav class="main-nav" aria-label="Primary">
+        <a href="/">Home</a>
         <div class="nav-item">
-          <button class="nav-drop-btn" aria-haspopup="true">Services ▾</button>
+          <button class="nav-drop-btn" aria-haspopup="true" aria-expanded="false">Services ▾</button>
           <div class="nav-dropdown">
             <a href="/services/bed-bug-inspection">Bed Bug Inspection</a>
             <a href="/services/heat-treatment">Heat Treatment</a>
@@ -74,7 +75,27 @@
             <a href="/services/emergency-bed-bug-treatment">Emergency Bed Bug Treatment</a>
           </div>
         </div>
-        <a href="/#areas">Service Areas</a>
+        <div class="nav-item">
+          <button class="nav-drop-btn" aria-haspopup="true" aria-expanded="false">Service Areas ▾</button>
+          <div class="nav-dropdown areas-dropdown">
+            <a href="/locations/old-naples">Old Naples</a>
+            <a href="/locations/park-shore">Park Shore</a>
+            <a href="/locations/east-naples">East Naples</a>
+            <a href="/locations/vanderbilt-beach">Vanderbilt Beach</a>
+            <a href="/locations/pelican-bay">Pelican Bay</a>
+            <a href="/locations/north-naples">North Naples</a>
+            <a href="/locations/lely">Lely</a>
+            <a href="/locations/golden-gate">Golden Gate</a>
+            <a href="/locations/golden-gate-estates">Golden Gate Estates</a>
+            <a href="/locations/ave-maria">Ave Maria</a>
+            <a href="/locations/immokalee">Immokalee</a>
+            <a href="/locations/marco-island">Marco Island</a>
+            <a href="/locations/bonita-springs">Bonita Springs</a>
+            <a href="/locations/estero">Estero</a>
+            <a href="/locations/fort-myers">Fort Myers</a>
+            <a href="/#areas" class="areas-all">View All Service Areas</a>
+          </div>
+        </div>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <a href="/blog">Blog</a>
@@ -114,7 +135,7 @@
         </div>
       </div>
     </section>
-<div class="page-media"><img src="/assets/images/location-east-naples.webp" alt="Palm-lined residential street in East Naples, FL" width="1920" height="1280" loading="lazy"></div>
+<div class="page-media"><img src="/assets/images/location-content-east-naples.webp" alt="Shaded banyan trees along a walking path in an East Naples park" width="1920" height="1280" loading="lazy"></div>
 
     <!-- ================= INTRO SPLIT ================= -->
     <section class="sec-white">
@@ -306,7 +327,7 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER (verbatim on every page) ================= -->
+    <!-- ================= FOOTER (verbatim on every page) ================= -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -315,14 +336,8 @@
             <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#17191D"/><path d="M32 10 L48 17 V32 C48 44 40 52 32 55 C24 52 16 44 16 32 V17 Z" fill="#E8552F"/><path d="M25 32 l5.5 5.5 L40 26" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="brand-text">Naples Bed Bug Treatment<small>Bed Bug Specialists</small></span>
           </a>
-          <p>Bed bug inspection, heat treatment, chemical treatment, and K9 detection for homes and businesses across Naples and Southwest Florida.</p>
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-          </ul>
+          <p>Bed bug inspection, heat treatment, and K9 detection for homes and businesses across Naples and Southwest Florida.</p>
+          <p class="footer-mini"><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/blog">Blog</a> · <a href="/privacy-policy">Privacy</a></p>
         </div>
         <div>
           <h4>Services</h4>
@@ -348,6 +363,8 @@
             <li><a href="/locations/vanderbilt-beach">Vanderbilt Beach</a></li>
             <li><a href="/locations/pelican-bay">Pelican Bay</a></li>
             <li><a href="/locations/north-naples">North Naples</a></li>
+          </ul>
+          <ul class="footer-links footer-areas-extra" hidden>
             <li><a href="/locations/lely">Lely</a></li>
             <li><a href="/locations/golden-gate">Golden Gate</a></li>
             <li><a href="/locations/golden-gate-estates">Golden Gate Estates</a></li>
@@ -358,6 +375,7 @@
             <li><a href="/locations/estero">Estero</a></li>
             <li><a href="/locations/fort-myers">Fort Myers</a></li>
           </ul>
+          <button class="areas-toggle" aria-expanded="false">View all 15 areas <span class="arr" aria-hidden="true">▾</span></button>
         </div>
         <div>
           <h4>Contact</h4>
