@@ -135,6 +135,27 @@ section{padding:78px 0}
 .hero-points span{display:inline-flex;align-items:center;gap:8px}
 .hero-points svg{color:var(--ember);flex:0 0 auto}
 
+/* ---------- Hero background image (blurred, behind content) ---------- */
+.hero-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  filter:blur(4px) brightness(.55);transform:scale(1.06);
+}
+.hero>.container{position:relative;z-index:1}
+
+/* ---------- 404 as dark hero ---------- */
+.err404{text-align:center}
+.err404 .err-code{font-family:var(--font-head);font-size:clamp(72px,10vw,110px);
+  font-weight:800;color:var(--ember);line-height:1;display:block}
+.err404 h1{color:#fff}
+.err404 p{color:#d9d2c7;max-width:600px;margin:0 auto 30px}
+.err404 .err-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.err404 .err-popular h2{color:#fff;font-size:22px;margin-bottom:18px}
+.err404 .err-popular ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 24px;
+  justify-content:center;padding:0;margin:0}
+.err404 .err-popular a{color:#d9d2c7}
+.err404 .err-popular a:hover{color:var(--ember)}
+
 /* ---------- Section heads ---------- */
 .sec-head{max-width:760px;margin:0 auto 48px;text-align:center}
 .sec-head.left{margin:0 0 40px;text-align:left}
